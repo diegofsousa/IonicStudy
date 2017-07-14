@@ -1,0 +1,62 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Login
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                Email
+              </ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                Senha
+              </ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button full color="primary">
+              Logar
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width="50">
+            <button ion-button full class="btnLogin">
+              Login com facebook
+            </button>
+          </ion-col>
+          <ion-col width="50">
+            <button ion-button full class="btnLogin">
+              Login com google
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <a (click)="doRegister()">Registrar-se</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
