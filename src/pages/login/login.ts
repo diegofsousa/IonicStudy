@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {RegistrarPage} from "../registrar/registrar";
 import {LoginProvider} from "../../providers/login/login";
 import {Credencial} from "../../models/credencial";
+import {TarefasListPage} from "../tarefas-list/tarefas-list";
 
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +28,7 @@ export class LoginPage {
   ionViewDidLoad(){
 
     this.loginProvider.loginSuccessEventEmitter.subscribe(
-      user => console.log(user)
+      user => this.navCtrl.setRoot(TarefasListPage)
     );
     this.loginProvider.loginFalhaEventEmitter.subscribe(
       error => console.log(error)
@@ -36,6 +37,10 @@ export class LoginPage {
 
   loginWithCredencial(){
     this.loginProvider.loginComCredencial(this.credencial);
+  }
+
+  loginComFacebook(){
+    this.loginProvider.loginComFacebook();
   }
 
   loginComGoogle(){
