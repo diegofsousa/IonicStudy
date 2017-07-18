@@ -16,7 +16,7 @@
             <ion-label floating>
               Título:
             </ion-label>
-            <ion-input name="titulo" [(ngModel)]="tarefa.titulo"></ion-input>
+            <ion-input name="titulo" [(ngModel)]="tarefa.titulo" required>{{ tarefa.titulo }}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -26,7 +26,7 @@
             <ion-label floating>
               Descrição:
             </ion-label>
-            <ion-input name="descricao" [(ngModel)]="tarefa.descricao"></ion-input>
+            <ion-input name="descricao" [(ngModel)]="tarefa.descricao" required>{{ tarefa.descricao }}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -38,7 +38,7 @@
             </ion-label>
             <ion-select name="state" [(ngModel)]="tarefa.state">
               <ion-option *ngFor="let state of lovProvider.getTarefaStates()" [value]="state">
-                {{ state }}
+                {{ getStateValue(state) }}
               </ion-option>
             </ion-select>
           </ion-item>
@@ -46,7 +46,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <button ion-button full clear>
+          <button ion-button full clear (click)="salvarTarefa()">
             Salvar tarefa
           </button>
         </ion-col>

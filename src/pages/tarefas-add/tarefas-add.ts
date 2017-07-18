@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import {Tarefa} from "../../models/tarefa";
 import {LovProvider} from "../../providers/lov/lov";
+import {TarefaProvider} from "../../providers/tarefa/tarefa";
+import {EstadoTarefa} from "../../models/estado-tarefa";
 
 
 @Component({
@@ -12,19 +14,31 @@ export class TarefasAddPage {
 
   tarefa:Tarefa;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              public lovProvider: LovProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public lovProvider: LovProvider,
+              public viewCtrl: ViewController,
+              public tarefasProvider: TarefaProvider) {
     this.tarefa = this.navParams.get("tarefa");
-    if(this.tarefa){
+    if(this.tarefa == undefined){
       this.tarefa = new Tarefa();
     }
   }
 
   ionViewDidLoad() {
     this.tarefa = this.navParams.get("tarefa");
-    if(this.tarefa){
+    if(this.tarefa == undefined){
       this.tarefa = new Tarefa();
     }
+  }
+
+  getStateValue(estadoTarefa: EstadoTarefa){
+    return EstadoTarefa[estadoTarefa];
+  }
+
+  salvarTarefa(){
+    this.tarefasProvider.save(this.tarefa);
+    this.viewCtrl.dismiss();
   }
 
 }
